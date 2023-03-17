@@ -4,7 +4,7 @@ const userRoutes = require('./routes/user.js')
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 80;
+const port = 3000;
 
 //middleware
 app.use(express.json());
