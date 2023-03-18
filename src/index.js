@@ -1,14 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/user.js')
+const userRoutes = require('./routes/user.js');
+const paymentMethodsRoutes = require('./routes/paymentMethod.js');
+const productRoutes = require('./routes/product.js');
+const prospectRoutes = require('./routes/prospect.js')
 require("dotenv").config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //middleware
 app.use(express.json());
 app.use('/api', userRoutes);
+app.use('/api', paymentMethodsRoutes);
+app.use('/api', productRoutes);
+app.use('/api', prospectRoutes);
+
 
 //routes
 app.get('/', (req, res)=> {
