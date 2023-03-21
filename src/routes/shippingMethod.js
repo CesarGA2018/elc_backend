@@ -1,45 +1,45 @@
 const express = require("express");
 const router = express.Router();
-const productSchema = require("../models/product.js");
+const shippingMethodSchema = require("../models/shippingMethod.js");
 
-// create product
-router.post('/product', (req, res) => {
-    const paymentM = productSchema(req.body);
+// create shippingMethod
+router.post('/shippingMethod', (req, res) => {
+    const paymentM = shippingMethodSchema(req.body);
     paymentM.save()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-//get all product
-router.get('/product', (req, res) => {
-    productSchema
+//get all shippingMethod
+router.get('/shippingMethod', (req, res) => {
+    shippingMethodSchema
     .find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-//get one product
-router.get('/product/:id', (req, res) => {
+//get one shippingMethod
+router.get('/shippingMethod/:id', (req, res) => {
     const { id } = req.params;
-    productSchema
+    shippingMethodSchema
     .findById(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-//update one product
-router.put('/product/:id', (req, res) => {
+//update one shippingMethod
+router.put('/shippingMethod/:id', (req, res) => {
     const { id } = req.params;
-    productSchema
+    shippingMethodSchema
     .updateOne({ _id: id }, { $set: req.body })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-//delete one product
-router.delete('/product/:id', (req, res) => {
+//delete one shippingMethod
+router.delete('/shippingMethod/:id', (req, res) => {
     const { id } = req.params;
-    productSchema
+    shippingMethodSchema
     .deleteOne({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));

@@ -2,6 +2,32 @@
 const mongoose = require("mongoose");
 
 
+const buySchema = mongoose.Schema({
+    trm:{
+        type: Number,
+        required: true
+    },
+    dateBuy: {
+        type: Date
+    }, 
+    tcBuy:{
+        type: String,
+        required: true
+    },
+    trmTC:{
+        type: Number,
+        required: true
+    },
+    copTC:{
+        type: Number,
+        required: true
+    },
+    difTCvsCalculate:{
+        type: Number,
+        required: true
+    }
+});  
+
 const pricesSchema = mongoose.Schema({
     usd:{
         type: Number,
@@ -50,21 +76,6 @@ const pricesSchema = mongoose.Schema({
 });
 
 
-const shippingSchema = mongoose.Schema({
-    company:{
-        type: String,
-        required: true
-    },
-    shippingCostCalculate: {
-        type: Number,
-        required: false
-    },
-    shippingCostReal: {
-        type: Number,
-        required: false
-    }
-});  
-
 const salesSchema = mongoose.Schema({
     value:{
         type: Number,
@@ -101,6 +112,10 @@ const prospectSchema = mongoose.Schema({
         type: pricesSchema,
         required: true
     },
+    buy: {
+        type: buySchema,
+        required: false
+    },
     freeShipping: {
         type: Boolean,
         required: false
@@ -128,8 +143,8 @@ const prospectSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    shipping: {
-        type: shippingSchema,
+    shippingId: {
+        type: String,
         required: false
     },
     sales: {
